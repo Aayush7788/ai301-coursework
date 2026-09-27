@@ -2,70 +2,85 @@
 
 Path: `beat-1-sandbox/unit-2/reproduction.md`
 
-Record of your claim and reproduction on the issue you chose in Unit 1, and of the
-evaluation runs that produced `eval-run.txt`. This file is graded at the path above; a copy
-kept anywhere else in the repository is not read.
-
-Complete every labelled field below. Each is graded on its own; content placed under the wrong
-label is not graded.
-
----
-
 ## Your identity upstream
 
 **GitHub username**
 
-[Your GitHub username, exactly as it appears on your profile — no `@`, no profile URL. Your
-comments upstream are identified by this name.]
-
----
+Aayush7788
 
 ## Posted upstream
 
 **Claim comment**
 
-[Link to the comment where you claimed the issue. Use the comment's own permalink, not the
-issue page on its own. **Then paste the text of that comment underneath the link** — the
-pasted text is what this field is graded on, so copy across what you actually posted.]
+https://github.com/codepath/pathreview-ai301-fa26-s3/issues/73#issuecomment-5857773868
+
+can i work on #73. I’m going to investigate the configuration mismatch between README.md and .env.example, reproduce the issue, and document what I find.
 
 **Reproduction comment**
 
-[Link to the comment where you posted your reproduction. It must record the environment
-(OS, relevant versions, code state), steps a stranger could follow, and what you observed.
-**Then paste the text of that comment underneath the link** — the pasted text is what this
-field is graded on, so copy across what you actually posted.]
+https://github.com/codepath/pathreview-ai301-fa26-s3/issues/73#issuecomment-5857822361
+
+## Reproduction Report — Issue #73
+
+## Environment
+
+OS: Windows
+Repository: Aayush7788/pathreview-ai301-fa26-s3
+Repository state tested: 2f4e82f52efbcfcc57d65b3fa5348672163ca088
+
+## Steps to Reproduce
+
+1. Open `README.md` and check the Quick Start environment configuration.
+2. Open `docs/SETUP.md` and check the environment configuration instructions.
+3. Open `.env.example` and check the documented LLM provider options and API key variables.
+4. Open `core/config.py` and check the LLM configuration fields.
+
+## Expected Behavior
+
+`README.md`, `docs/SETUP.md`, `.env.example`, and `core/config.py` should provide consistent instructions for configuring the supported LLM providers.
+
+## Actual Behavior
+
+`README.md` instructs users to add `OPENROUTER_API_KEY` to `.env`.
+
+`docs/SETUP.md` also tells users to set `OPENROUTER_API_KEY` and describes it as required for AI features.
+
+However, `.env.example` documents only `mock` and `openai` as LLM provider options and contains `OPENAI_API_KEY`, but does not contain `OPENROUTER_API_KEY`.
+
+At the same time, `core/config.py` defines `openrouter_api_key`, `openrouter_base_url`, and `openrouter_model`.
+
+## Evidence
+
+Repository commit tested: `2f4e82f52efbcfcc57d65b3fa5348672163ca088`.
+
+`README.md` contains the instruction to add `OPENROUTER_API_KEY` to `.env`.
+
+`docs/SETUP.md` contains the instruction to set `OPENROUTER_API_KEY` and describes it as required for AI features.
+
+`.env.example` contains:
+`LLM_PROVIDER=mock`
+`OPENAI_API_KEY=sk-your-key-here`
+
+`.env.example` does not contain `OPENROUTER_API_KEY`.
+
+`core/config.py` defines the OpenRouter configuration fields.
 
 ## Eval iterations
 
-Answer all four sections. Quote source text directly; paraphrase does not satisfy these
-fields.
-
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+18/20
 
 **Package analysis**
 
-[Pick one scored package (`pkg-01` through `pkg-20` — the four `calib-` packages are never
-scored). Name it by id, say what your rubric decided and what the gold label said, and
-explain why your rubric read it that way.]
+pkg-05: My rubric decided REJECT, while the gold label was ACCEPT. The disagreement came from the `steps-complete` check being too strict for this package.
 
 **Check rationale**
 
-[Quote one check from the `rubric.md` you uploaded to `tools/repro-check/`, exactly as it reads now.
-Then say why it reads that way — what you revised to get there, or what you rejected in
-favour of it.]
+> | steps-complete | Reproduction steps in the report | A stranger can follow the listed setup and commands from the stated starting point without guessing or relying on private/unshared files or configuration. | required |
+
+I kept this check because the reproduction should be followable by another person and should not depend on private setup or missing information.
 
 **Trade-offs**
 
-[Every check gives something up. Any one of these is a complete answer: a package whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
-
----
-
-Related paths: `eval-run.txt` in this directory; your skill's files in
-`tools/repro-check/`.
+The `steps-complete` check helps reject reproductions that another person cannot follow, but pkg-05 showed that making this check too strict can reject an otherwise acceptable package.
