@@ -4,11 +4,13 @@
 
 **Pull request**
 
-https://github.com/codepath/pathreview-ai301-fa26-s3/pull/158
+https://github.com/codepath/pathreview-ai301-fa26-s3/pull/160
 
 **Branch**
 
-`docs/73-openrouter-env-example`
+`fix/73-openrouter-env-example`
+
+The initial PR #158 was closed after its branch failed the required naming convention. PR #160 replaces it from the required `fix/` branch. GitHub reports all five checks passing on #160.
 
 ## Eval iterations
 
@@ -32,4 +34,3 @@ I added this sentence to `decisive-test-evidence` after the first run rejected t
 **Trade-offs**
 
 The revised test rule allows representative evidence for sibling paths with the same fix shape. That changed the verdicts for `pkg-02`, `pkg-05`, and `pkg-13` from reject to accept, matching gold. The `--only` canaries `pkg-01`, `pkg-03`, `pkg-04`, and `pkg-12` stayed reject. The remaining `pkg-20` miss shows the cost: repository-specific AI disclosure requirements need more explicit wording in the standards check.
-
