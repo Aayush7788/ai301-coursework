@@ -10,7 +10,7 @@ https://github.com/codepath/pathreview-ai301-fa26-s3/pull/160
 
 `fix/73-openrouter-env-example`
 
-The initial PR #158 was closed after its branch failed the required naming convention. PR #160 replaces it from the required `fix/` branch. GitHub reports all five checks passing on #160.
+PR #160 is the active submission for issue #73 from `fix/73-openrouter-env-example`; GitHub reports all five CI checks passing.
 
 ## Eval iterations
 
