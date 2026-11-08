@@ -1,103 +1,45 @@
-# Contribution: [Issue Title]
+# Contribution: Clarify normsys modifier inputs
 
 Path: `beat-2-contribution/contribution-story.md`
 
-This file is Assignment 5, and it is graded at the path above; a copy kept anywhere else in
-the repository is not read. **Keep every section header below under its exact name** — the
-format criteria grade exactly that. Your course repo link is the whole submission: no tool
-files and no evidence uploads are part of Assignment 5.
-
 **Contribution Number:** [1]
-**Student:** [Student name]
-**GitHub Username:** [your GitHub username, exactly as it appears on your profile - no @, no
-profile URL. Your comments upstream are identified by this name.]
-**Issue:** [GitHub issue link]
-**Pull Request:** [GitHub PR link, once opened]
-
-One repository, built across units 5 to 8, telling the whole story of your real
-contribution. Fill it as you work, not at the end — the sections below ask for evidence that
-is far easier to write down as it happens than to reconstruct in the last weekend.
-
-Contribution Number stays `[1]` unless you make more than one contribution this term; it
-just numbers them.
-
----
+**Student:** Aayush Kotadia
+**GitHub Username:** Aayush7788
+**Issue:** https://github.com/scikit-hep/pyhf/issues/1410
+**Pull Request:** https://github.com/scikit-hep/pyhf/pull/2786
 
 ## Toolkit
 
-Every story section below, from Why I Chose This Issue through Pull
-Request, ends with a Toolkit block: which tool did that phase's work
-and how you used it, what it produced, what difficulties or
-shortcomings it presented, and what you changed or would change
-because of them. Together the blocks are the thread the rubric's
-Toolkit points read, and they are the raw material for your unit-9
-portfolio, so keep them current as you work rather than
-reconstructing them later.
+**Unit 5: Manual issue scouting and fit checks**
 
-A Toolkit block looks like this (copy it into each story section and
-fill it there):
+I used the course issue-selection site, the issue-scout rubric, and GitHub evidence to screen documentation issues. The GitHub CLI token was invalid, so I could not run the automated scan; I used the rubric directly and recorded this limit instead of claiming an automated result. The site search and rubric surfaced pyhf #1410 as the best fit; an alternate candidate was rejected because its issue says AI-authored PRs will be rejected.
 
-```text
-**Toolkit**
+**Unit 6: Claim and upstream policy review**
 
-- Tool: [which tool did this phase's work, and how you used it]
-- What it produced: [described in a sentence or a short excerpt]
-- Difficulties: [what fought you or fell short, or "none met"]
-- What changed: [the patch, revision, or workaround, what you would
-  update, or "nothing"]
-```
+I read pyhf's full CONTRIBUTING.md and the issue thread, then posted a short claim comment from my signed-in GitHub account. The connector could not post comments, so I used GitHub in the browser. The voice-guard hook and local repo memory were not installed because the local clone/auth setup was unavailable; I kept the comment factual and linked it below.
 
-This section also keeps one short dated entry per week of tool work,
-starting below: what you built or changed that week, what broke, and
-what you changed because of it. The blocks tell the story where it
-happened; these entries are the toolkit's own timeline.
+**Unit 7: Plan, documentation change, and PR**
 
-All four entries are graded. Keep every heading below, and fill each
-one in the week it belongs to.
+The GitHub editor created a focused branch with the documentation clarification and required contributor-list entry, and I opened draft PR #2786. I could not run the local ship-gate or tests because cloning failed through the configured network proxy and the GitHub CLI token was invalid. GitHub checks show pre-commit, CodeFactor, PR-title validation, and the Read the Docs preview build passing. Twelve required checks across six workflows await maintainer approval; CodeRabbit skipped its review because the PR is a draft.
 
-**Unit 5: [one line on the tool work]**
+**Unit 8: PR monitoring and playbook**
 
-[2-4 sentences: what you built (the scout, your strategy), what broke
-or fell short, what changed because of it.]
-
-**Unit 6: [one line on the tool work]**
-
-[2-4 sentences: the voice-guard, the repo-memory file. What broke or
-fell short, and what changed because of it. "Nothing broke" counts when
-it is true - say how you know.]
-
-**Unit 7: [one line on the tool work]**
-
-[2-4 sentences: the ship-gate and your gate manifest. What it produced
-on your real branch, what fought you, what changed because of it.]
-
-**Unit 8: [one line on the tool work]**
-
-[2-4 sentences: the PR-monitor and your playbook. What it read, what it
-drafted, what you did with the draft.]
+I could not run the PR monitor because the local GitHub CLI token is invalid. I checked the PR manually through GitHub: no maintainer feedback has arrived, four checks passed, and twelve required checks across six workflows await maintainer approval. I wrote a local playbook draft and checked five recent merged outside-contributor PRs; their first maintainer response ranged from about four minutes to 33 days, with a median near 16 hours. My draft sets a five-day wait before one polite nudge. I have not nudged the maintainers.
 
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs in your own words: how you searched, what your scan
-surfaced, what your scout's verdict said, why this issue fits your
-profile, and what you hope to learn. If your scout's verdict on it
-was reject and you chose it anyway, say so here and say why; choosing
-against your own tool silently is what loses points. Close with an
-honest read of the tool itself: where the scout fell short on a real
-wild search and what you changed or would change, or what convinced
-you it held up. **Record the link to your claim comment in this section too.**
-Not claimed yet? Write `claim pending` and today's date where the link goes,
-and add the link the moment your claim lands.]
+I searched the course issue-selection site with Python and documentation filters and reviewed three possible issues. The pyhf issue is one clear documentation change, has the `good first issue` and `docs` labels, is unassigned, and had no comments or linked PR when I checked it. The repository is active and its CONTRIBUTING.md does not prohibit AI-assisted work. The issue is old (opened in 2021), so I checked the current `docs/likelihood.rst` instead of assuming it was still open work: it still describes `hi` and `lo` as floats without saying plainly that they are relative factors. My manual rubric verdict was **accept, straightforward**; the preferred maintainer-response check was unclear because the issue had no comments.
+
+I rejected Hiero #2730 because its issue says AI bot-authored PRs will be rejected. I also rejected the Thaumonomicon typo candidate because it did not fit my Python documentation focus and sat in a much broader repository. The scout's automated `gh` scan was not available because the local GitHub CLI token was invalid, so I used the rubric and live repository evidence manually. I would add a saved manual evidence report and restore a working CLI token before the next scan. My claim is [here](https://github.com/scikit-hep/pyhf/issues/1410#issuecomment-6719218260).
 
 **Toolkit**
 
-- Tool: issue-scout (your scout: your search strategy, your rubric),
-  and how you used it
-- What it produced: [the scan and its verdict on this issue, described]
-- Difficulties: [where it fell short, or "none met" if none did]
-- What changed: [what you patched or would update, or "nothing"]
+- Tool: Issue-selection site, issue-scout rubric, and GitHub repository/issue evidence, applied manually.
+- What it produced: A screened set of three candidates and an accept verdict for pyhf #1410.
+- Difficulties: The automated scan could not run with the invalid GitHub CLI token; the old issue also had no response history to grade.
+- What changed: I checked the current docs and implementation directly, chose a small documentation-only scope, and recorded the automated-scan limitation honestly.
 
 ---
 
@@ -105,26 +47,26 @@ and add the link the moment your claim lands.]
 
 **Problem Description**
 
-[In your own words, what is broken or missing?]
+The `normsys` documentation gives `hi` and `lo` values as floats but does not clearly tell readers that they are multiplicative factors, not absolute event counts.
 
 **Expected Behavior**
 
-[What should happen?]
+The docs should say that `hi` and `lo` scale nominal sample rates and show how example values change those rates.
 
 **Current Behavior**
 
-[What actually happens?]
+The docs explain the interpolation endpoints and show `hi: 1.1` and `lo: 0.9`, but do not state explicitly that these are relative scale factors.
 
 **Affected Components**
 
-[Which parts of the codebase are involved?]
+`docs/likelihood.rst`, the generated normsys API documentation, and the implementation in `src/pyhf/modifiers/normsys.py`. This patch changes the likelihood documentation and the contributor list only; the generated API page has no separate source docstring describing these inputs.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: GitHub source viewer and issue-scout/repro-check criteria.
+- What it produced: A trace from issue #1410 to the `normsys` section and `normsys_builder.collect`.
+- Difficulties: The local clone was unavailable, so the repository could not be inspected with local search tools.
+- What changed: I kept the change within the documented issue and verified the example against the visible implementation source.
 
 ---
 
@@ -132,31 +74,26 @@ and add the link the moment your claim lands.]
 
 **Environment Setup**
 
-[What a stranger would need to stand this up: your operating system,
-the relevant versions (language, runtime, package manager, the project
-itself), and how you set the project up. Then the challenges you faced
-and how you solved them, or that none came up.]
+Windows 11, Git 2.55.0, and the signed-in GitHub browser. The target source was pyhf `main` at base commit `2c99d0b7cfa703c3798c6588312857c5b3e97d51`. `gh auth status` reported an invalid keyring token, and `git clone` could not connect through the configured proxy. I therefore compared the issue with the live GitHub source and editor; I could not create a local checkout or run a local documentation build.
 
 **Steps to Reproduce**
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+1. Open issue #1410 and read its question about absolute counts versus relative scale factors.
+2. Open `docs/likelihood.rst` on `main` and find “Normalisation Uncertainty (normsys)”.
+3. Compare the prose with its `hi: 1.1`, `lo: 0.9` example: the factors are named as floats, but the text does not explicitly distinguish them from event counts.
 
 **Reproduction Evidence**
 
-- **Commit showing reproduction:** [link to commit in your fork]
-- **Screenshots/logs:** [if applicable]
-- **My findings:** [what you discovered during reproduction; an
-  honest, evidenced cannot-reproduce that led you to re-pick or ask
-  the maintainer belongs here and costs you nothing]
+- **Commit showing reproduction:** none; I could not make a local reproduction commit.
+- **Screenshots/logs:** GitHub source and issue were inspected in the signed-in browser. The clone failure was: `Failed to connect to github.com:443 over proxy 127.0.0.1`.
+- **My findings:** The issue is a documentation ambiguity, not a runtime failure. In `normsys_builder.collect`, `lo` and `hi` are used as the modifier endpoint factors; the docs needed to say what those numbers mean to a reader.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: GitHub issue/source viewer and the repro-check evidence checklist.
+- What it produced: A repeatable source-based check showing the missing explanation.
+- Difficulties: No local checkout, executable reproduction, or screenshot file was available.
+- What changed: I used the issue text and current source as the reproduction evidence and did not claim a local test or commit.
 
 ---
 
@@ -164,93 +101,74 @@ and how you solved them, or that none came up.]
 
 **Analysis**
 
-[Your analysis of the root cause: what is causing the issue, traced
-to the files and functions involved.]
+The issue is caused by missing explanatory text. `normsys_builder.collect` reads the `lo` and `hi` values and supplies them as the downward and upward modifier endpoints; the surrounding likelihood docs identify the interpolation but do not say plainly that the values are relative multipliers rather than yields.
 
 **Proposed Solution**
 
-[High-level description of your fix approach, and what you are
-deliberately NOT changing.]
+Explain that the values multiply nominal sample rates, show that 1.1 and 0.9 mean a 10% increase and decrease at the endpoints, and link to the HistFactory modifier table. I did not change model behavior, APIs, or tests.
 
 **Implementation Plan**
 
-1. [Modify file X to do Y]
-2. [Add or change Z]
-3. [Update tests]
-
-[Record deviations here as they happen: what changed mid-build and
-why. A recorded deviation is honest work; silent drift is not.]
+1. Clarify the relative-factor meaning in `docs/likelihood.rst`.
+2. Give a two-bin numerical example and link to `tab:modifiers_and_constraints`.
+3. Add my name to `docs/contributors.rst`, as required by CONTRIBUTING.md, then check the diff and open a draft PR.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: GitHub source viewer, issue statement, and a written plan checked against the repository instructions.
+- What it produced: A two-file documentation-only change tied to issue #1410.
+- Difficulties: The plan-check command could not run without the local skill environment and clone.
+- What changed: I kept the patch limited to the requested clarification and required contributor entry.
 
 ---
 
 ## Testing Strategy
 
-[What observable checks prove the fix: your reproduction steps re-run
-against the built change (before and after), and the repo's own test
-suite or checks with the outcome shown. "Tests pass" with nothing
-observable named is not a strategy.]
+The repository recommends a warning-free Sphinx build with `pixi run -e docs build-docs` and pytest with `pytest --ignore=tests/test_notebooks.py`. I could not run either locally because the clone failed. On PR #2786, GitHub reports success for the Read the Docs preview build, pre-commit, CodeFactor, and PR-title validation. Twelve required checks across six workflows await maintainer approval; CodeRabbit skipped its review because the PR is a draft. The pytest suite was not run locally, and no maintainer review has arrived yet.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: Repository check instructions and GitHub PR check diagnostics.
+- What it produced: The exact local check commands and live CI results for the draft PR.
+- Difficulties: Local Sphinx and pytest checks were not available without a clone; Read the Docs build succeeded.
+- What changed: I marked the local checks unrun and reported each remote check by its actual state.
 
 ---
 
 ## Implementation Notes
 
-[A running log, added to as you work. Date each entry. What you
-built, decisions you made when you made them, wrong turns included.]
+**November 8, 2026**
 
-**[Date]**
-
-[Entry]
-
-**[Date]**
-
-[Entry]
+Read the issue and current source, checked CONTRIBUTING.md, posted a claim comment, and created a fork. Committed the scale-factor explanation on `docs/clarify-normsys-scale-factors`, then added my contributor name. Opened draft PR #2786 against `scikit-hep/pyhf:main`. The diff has no reported conflicts; pre-commit, CodeFactor, title validation, and the Read the Docs preview passed; twelve required checks across six workflows await maintainer approval, and CodeRabbit skipped review for draft status. Local tests remain unrun because the clone and CLI authentication failed.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: Signed-in GitHub browser and GitHub PR diagnostics.
+- What it produced: Two commits, a reviewed two-file diff, and draft PR #2786.
+- Difficulties: The browser editor did not provide local test execution, and the CLI credentials were invalid.
+- What changed: I verified the remote diff and CI state and left the PR as a draft for review.
 
 ---
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when opened]
+**PR Link:** https://github.com/scikit-hep/pyhf/pull/2786
 
-**PR Description:** [what the PR says; much of the content above
-adapts into it]
+**PR Description:** Clarifies that `normsys` `hi` and `lo` are relative multiplicative scale factors, not absolute event counts. Adds the endpoint example `[10, 20]` → `[11, 22]` and `[9, 18]`, links to the HistFactory modifier table, adds my contributor name, and references issue #1410 with `Fixes #1410`. The description discloses that local tests were not run when opened. It also states that AI helped draft the wording and that I checked the example against the source.
 
 **Maintainer Feedback:**
 
-- [Date]: [feedback received, or "none yet"; silence is a normal
-  state and costs you nothing]
-- [Date]: [how you addressed it]
+- November 8, 2026: None yet. CodeRabbit skipped automatic review because the PR is a draft; this is not maintainer feedback.
+- November 8, 2026: No maintainer changes requested yet. I will update this line if feedback arrives.
 
-**Status:** [Awaiting review / Iterating / Merged / Closed. The
-status is a fact you record, never a grade: the PR is graded as
-opened.]
+**Status:** Draft; four CI checks passed; twelve required checks across six workflows await maintainer approval; awaiting maintainer review.
 
 **Toolkit**
 
-- Tool:
-- What it produced:
-- Difficulties:
-- What changed:
+- Tool: GitHub PR page, check diagnostics, and a manual review-time check of five merged contributor PRs.
+- What it produced: Draft PR #2786, a current status snapshot, and a local playbook draft. The monitor itself did not run.
+- Difficulties: The GitHub CLI token was invalid, so the PR monitor could not run; the GitHub read connection still showed the current state.
+- What changed: I used GitHub read-only status and five PR timelines to prepare the playbook manually; I left the PR as a draft under pyhf rules.
 
 ---
 
@@ -258,25 +176,26 @@ opened.]
 
 **Technical Skills Gained**
 
-[What you learned technically, named concretely.]
+I learned how `normsys` endpoint factors relate to the nominal sample rates, how to trace a documentation issue to the implementation, and how to use a two-bin example to explain relative scaling.
 
 **Challenges Overcome**
 
-[What was hard and how you solved it; point at the real events, the
-Toolkit blocks above are full of them.]
+The local clone and GitHub CLI were unavailable. I used the signed-in browser to create a fork, branch, commits, and draft PR, then used the GitHub connection to read the diff and CI results. I did not claim tests I could not run.
 
 **What I'd Do Differently Next Time**
 
-[Reflection on your process.]
+I would verify GitHub CLI authentication and clone the repository before claiming an issue, so I could run the documentation build locally and use the issue-scout, voice-guard, ship-gate, and PR-monitor commands as intended.
 
 ---
 
 ## Resources Used
 
-[What actually helped, not a reading list. List things this story
-already shows you using: the doc you followed to set the environment
-up, the thread that explained the bug, the person who answered you.
-One real entry beats ten plausible ones.]
+- [Issue #1410 and claim comment](https://github.com/scikit-hep/pyhf/issues/1410#issuecomment-6719218260)
+- [pyhf contribution guide](https://github.com/scikit-hep/pyhf/blob/main/CONTRIBUTING.md)
+- [Likelihood documentation](https://github.com/scikit-hep/pyhf/blob/main/docs/likelihood.rst)
+- [HistFactory modifier table](https://github.com/scikit-hep/pyhf/blob/main/docs/intro.rst#tab:modifiers_and_constraints)
+- [Draft PR #2786 and CI checks](https://github.com/scikit-hep/pyhf/pull/2786)
 
-- [Link to documentation that helped]
-- [Discussion, issue, or post that helped]
+
+
+
