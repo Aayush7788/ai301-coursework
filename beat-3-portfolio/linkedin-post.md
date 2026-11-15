@@ -1,7 +1,7 @@
-I opened a documentation pull request to explain what two values in a scientific Python library mean. I added a simple example showing how those values scale sample rates, so readers can see the effect without guessing.
+I opened a documentation pull request to explain two settings in pyhf, a Python tool used for statistical analysis. I added a simple example showing how those settings raise or lower expected counts in a model.
 
-The work is in pyhf, an open source tool used for statistical analysis. My pull request is still open as a draft, so I have not described it as merged. Its documentation preview and several automated checks passed, while maintainer review and approval are still needed.
+The pull request is still open as a draft, so the change is not merged. Its documentation preview and several automated checks passed, but maintainer review is still needed.
 
-This project reminded me to check both the issue and the current documentation before proposing a fix. When my local tools could not connect, I used the repository and GitHub evidence I could access, and kept the limits clear. I’m looking forward to maintainer feedback.
+This work taught me to check the current documentation before choosing a fix. When my local GitHub tools failed, I used the evidence I could access and stated what I could not verify. Clear examples help people understand what the numbers in a model mean.
 
 https://github.com/scikit-hep/pyhf/pull/2786
