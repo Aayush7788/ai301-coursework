@@ -24,7 +24,7 @@ The GitHub editor created a focused branch with the documentation clarification 
 
 **Unit 8: PR monitoring and playbook**
 
-I could not run the PR monitor because the local GitHub CLI token is invalid. I checked the PR manually through GitHub: no maintainer feedback has arrived, four checks passed, and twelve required checks across six workflows await maintainer approval. I wrote a local playbook draft and checked five recent merged outside-contributor PRs; their first maintainer response ranged from about four minutes to 33 days, with a median near 16 hours. My draft sets a five-day wait before one polite nudge. I have not nudged the maintainers.
+I could not run the local PR monitor because the GitHub CLI token is invalid. I wrote a local playbook draft, checked five recent merged outside-contributor PRs, and used GitHub's read-only PR data to check the current state. As of November 18, the PR remains a draft with no maintainer reviews, so no reply or nudge draft was needed. My playbook uses a five-day wait before one polite nudge; I have not nudged the maintainers.
 
 ---
 
@@ -141,6 +141,10 @@ The repository recommends a warning-free Sphinx build with `pixi run -e docs bui
 
 Read the issue and current source, checked CONTRIBUTING.md, posted a claim comment, and created a fork. Committed the scale-factor explanation on `docs/clarify-normsys-scale-factors`, then added my contributor name. Opened draft PR #2786 against `scikit-hep/pyhf:main`. The diff has no reported conflicts; pre-commit, CodeFactor, title validation, and the Read the Docs preview passed; twelve required checks across six workflows await maintainer approval, and CodeRabbit skipped review for draft status. Local tests remain unrun because the clone and CLI authentication failed.
 
+**November 18, 2026**
+
+Rechecked PR #2786 through GitHub's read-only PR data before finalizing this story. The PR is still open and marked draft, with no maintainer reviews or new maintainer feedback. I updated the status and Unit 8 entry to record that current state and did not post a nudge.
+
 **Toolkit**
 
 - Tool: Signed-in GitHub browser and GitHub PR diagnostics.
@@ -158,17 +162,16 @@ Read the issue and current source, checked CONTRIBUTING.md, posted a claim comme
 
 **Maintainer Feedback:**
 
-- November 8, 2026: None yet. CodeRabbit skipped automatic review because the PR is a draft; this is not maintainer feedback.
-- November 8, 2026: No maintainer changes requested yet. I will update this line if feedback arrives.
+- November 18, 2026: None yet. The PR has no maintainer reviews; the only thread activity is the earlier CodeRabbit notice that draft PRs are not automatically reviewed.
 
-**Status:** Draft; four CI checks passed; twelve required checks across six workflows await maintainer approval; awaiting maintainer review.
+**Status:** Draft and awaiting maintainer review. The PR is open and mergeable; its last recorded CI result has four passing checks, while twelve required checks across six workflows await maintainer approval.
 
 **Toolkit**
 
-- Tool: GitHub PR page, check diagnostics, and a manual review-time check of five merged contributor PRs.
-- What it produced: Draft PR #2786, a current status snapshot, and a local playbook draft. The monitor itself did not run.
-- Difficulties: The GitHub CLI token was invalid, so the PR monitor could not run; the GitHub read connection still showed the current state.
-- What changed: I used GitHub read-only status and five PR timelines to prepare the playbook manually; I left the PR as a draft under pyhf rules.
+- Tool: GitHub PR data, check diagnostics, and a manual review-time check of five merged contributor PRs.
+- What it produced: Draft PR #2786, a current status snapshot, and a local playbook draft. The local monitor itself did not run.
+- Difficulties: The GitHub CLI token was invalid, so the local PR-monitor command could not run.
+- What changed: I used GitHub's read-only status to update the story and left the PR as a draft under pyhf rules.
 
 ---
 
@@ -195,7 +198,3 @@ I would verify GitHub CLI authentication and clone the repository before claimin
 - [Likelihood documentation](https://github.com/scikit-hep/pyhf/blob/main/docs/likelihood.rst)
 - [HistFactory modifier table](https://github.com/scikit-hep/pyhf/blob/main/docs/intro.rst#tab:modifiers_and_constraints)
 - [Draft PR #2786 and CI checks](https://github.com/scikit-hep/pyhf/pull/2786)
-
-
-
-
