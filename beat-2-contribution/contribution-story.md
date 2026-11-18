@@ -10,19 +10,19 @@ Path: `beat-2-contribution/contribution-story.md`
 
 ## Toolkit
 
-**Unit 5: Manual issue scouting and fit checks**
+### Unit 5: Manual issue scouting and fit checks
 
 I used the course issue-selection site, the issue-scout rubric, and GitHub evidence to screen documentation issues. The GitHub CLI token was invalid, so I could not run the automated scan; I used the rubric directly and recorded this limit instead of claiming an automated result. The site search and rubric surfaced pyhf #1410 as the best fit; an alternate candidate was rejected because its issue says AI-authored PRs will be rejected.
 
-**Unit 6: Claim and upstream policy review**
+### Unit 6: Claim and upstream policy review
 
 I read pyhf's full CONTRIBUTING.md and the issue thread, then posted a short claim comment from my signed-in GitHub account. The connector could not post comments, so I used GitHub in the browser. The voice-guard hook and local repo memory were not installed because the local clone/auth setup was unavailable; I kept the comment factual and linked it below.
 
-**Unit 7: Plan, documentation change, and PR**
+### Unit 7: Plan, documentation change, and PR
 
 The GitHub editor created a focused branch with the documentation clarification and required contributor-list entry, and I opened draft PR #2786. I could not run the local ship-gate or tests because cloning failed through the configured network proxy and the GitHub CLI token was invalid. GitHub checks show pre-commit, CodeFactor, PR-title validation, and the Read the Docs preview build passing. Twelve required checks across six workflows await maintainer approval; CodeRabbit skipped its review because the PR is a draft.
 
-**Unit 8: PR monitoring and playbook**
+### Unit 8: PR monitoring and playbook
 
 I could not run the local PR monitor because the GitHub CLI token is invalid. I wrote a local playbook draft, checked five recent merged outside-contributor PRs, and used GitHub's read-only PR data to check the current state. As of November 18, the PR remains a draft with no maintainer reviews, so no reply or nudge draft was needed. My playbook uses a five-day wait before one polite nudge; I have not nudged the maintainers.
 
