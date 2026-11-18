@@ -1,7 +1,7 @@
-I opened a documentation pull request to explain two settings in pyhf, a Python tool used for statistical analysis. I added a simple example showing how those settings raise or lower expected counts in a model.
+I built and improved `pr-precheck`, an AI assistant that checks whether a pull request is ready to submit. After its first evaluation, I changed the rubric and improved its agreement from 17 out of 20 cases to 19 out of 20.
 
-The pull request is still open as a draft, so the change is not merged. Its documentation preview and several automated checks passed, but maintainer review is still needed.
+The tool checks a proposed change against its issue, plan, tests, and repository rules. My first run showed that I had made one evidence rule too strict, so three valid cases were rejected. I changed the rule, retested those cases, and then ran the full evaluation again.
 
-This work taught me to check the current documentation before choosing a fix. When my local GitHub tools failed, I used the evidence I could access and stated what I could not verify. Clear examples help people understand what the numbers in a model mean.
+One case still exposed a gap: the tool missed a repository rule requiring AI-use disclosure. My next step is to make that check more specific and run the evaluation again. This taught me to improve automation by studying its misses, not just its score.
 
-https://github.com/scikit-hep/pyhf/pull/2786
+https://github.com/Aayush7788/ai301-coursework/blob/main/beat-3-portfolio/technical-writeup.md
