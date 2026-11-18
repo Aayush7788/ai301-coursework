@@ -1,27 +1,29 @@
-# Improving my pull request review assistant
+# Clarifying scale factors in pyhf documentation
 
 ## Overview
 
-I built and improved `pr-precheck`, a rubric-driven AI assistant that checks whether a pull request is ready to submit. It compares an issue and plan with the code change, test evidence, and repository rules, then returns an `accept` or `reject` verdict with evidence. My first full evaluation agreed with the expected labels on 17 of 20 cases. I changed one evidence rule, retested it, and reached 19 of 20 on the final run. One missed repository disclosure rule still shows where the assistant needs work.
+I opened [a documentation pull request for pyhf issue #1410](https://github.com/scikit-hep/pyhf/pull/2786). The issue asked whether `normsys` `hi` and `lo` values are event counts or relative scale factors. I checked the current likelihood documentation and source, then added a plain explanation, a two-bin example, and a link to the modifier table. I also wrote a manual PR-monitor playbook when my local monitor could not run. As of November 15, 2026, the PR is open, in draft, and has no maintainer review; it is not merged.
 
 ## What happened
 
-I wanted the assistant to make a careful, evidence-based decision about a pull request, rather than approve it because its description sounded confident. I wrote a rubric with five required checks: issue and plan fidelity, test evidence, diff reviewability, repository standards, and description-to-evidence alignment. The assistant reads the package and cites a fact for each check before giving its verdict.
+I first tried to use the issue-scout workflow to find a suitable issue. The GitHub CLI token was invalid, so the automated scan did not run. I changed to the issue rubric and reviewed three candidates manually. I rejected one issue that warned against AI-authored PRs and another that was a poor fit. I chose pyhf #1410 after checking the current issue, contribution guide, and `docs/likelihood.rst`. The issue had been open since 2021, so checking the current docs helped me confirm the gap was still there.
 
-My first full evaluation agreed with the expected answers on 17 of 20 packages. Three clear accepts, `pkg-02`, `pkg-05`, and `pkg-13`, were rejected. I reviewed their evidence and saw the same pattern: each plan named related variants with the same fix shape, one main case had been reproduced, and a regression test covered that shared behavior. My rubric demanded separate reproduction evidence for every variant. That rule was stricter than the evidence needed to verify those changes.
+The original text said the modifier endpoints were recorded “as floats.” That did not explain what the values meant. My change says:
 
-I changed `decisive-test-evidence` to allow a reproduced main case and a shared regression test when the diff shows that each related variant received the same fix. The rule I added says:
+> “These values are relative multiplicative scale factors applied to the nominal sample rates, not absolute event counts.”
 
-> “When the plan names closely related variants implemented with the same fix shape, a reproduced primary case and a regression test covering that shared behavior can establish coverage if the diff shows each variant received the fix; do not demand a separate repro for every variant.”
+I added a concrete example too: nominal rates `[10, 20]` become `[11, 22]` when `hi` is `1.1`, and `[9, 18]` when `lo` is `0.9`. This is the main change in `docs/likelihood.rst`. I also added my name to `docs/contributors.rst`, as the repository guide required. The PR contains two commits and changes two files.
 
-I then ran a seven-package evaluation with the three previous misses and four reject cases as checks against overcorrecting the rubric. It agreed on all seven. The three false rejects became accepts, and the four canary rejects stayed rejects. The final full evaluation agreed on 19 of 20 packages, above the 18-of-20 passing bar. These are saved evaluation results from my course work, not a claim that the assistant has been validated on every pull request.
+My local clone and checks were blocked. The configured proxy stopped the clone, and my GitHub CLI token was invalid. I could not run the local documentation build or pytest. GitHub did run checks on the PR: the Read the Docs preview, pre-commit, CodeFactor, and PR-title validation passed. In my November 8 status check, GitHub showed twelve required checks across six workflows waiting for maintainer approval. The successful preview is a result of the contribution; it does not mean the PR was merged or approved.
 
-One miss remained. On `pkg-20`, the assistant said `accept`, while the expected answer was `reject`. The repository facts required an AI-use disclosure, but the candidate description did not include one. My `repository-standards` rubric mentions AI disclosure when a repository requires it, yet the assistant did not make this specific rule decisive. That result showed me that broad standards wording was not enough for every repository-specific policy.
+I also planned to run the PR monitor, but the invalid token stopped that tool. I changed course and wrote a manual monitoring playbook. I reviewed five merged PRs from outside contributors: #2720, #2759, #2694, #2688, and #2668. Their first maintainer responses took about two hours, four minutes, 33 days, 16 hours, and 46 hours. Based on that small sample, my playbook says:
 
-I also submitted my own change in the course repository as [PR #160](https://github.com/codepath/pathreview-ai301-fa26-s3/pull/160), which GitHub reported with all five CI checks passing. That PR is separate from the saved evaluation above: the evaluation is what exposed and verified the rubric change.
+> “I will wait five quiet days before one polite nudge.”
+
+This is a real rule in my playbook, but it is still a manual draft. It did not monitor the PR automatically, and I have not sent a nudge. I changed from having no usable monitor to having a clear follow-up plan without pretending the tool had run.
 
 ## Limitations and what's next
 
-The final run still had one false accept. The assistant can miss a repository-specific policy even when its rubric names that policy type. The evaluation covers 20 packages, so 19 of 20 does not prove that the tool is reliable on every project or every kind of pull request.
+The PR is still open and in draft. No maintainer review has arrived, so I do not know whether the change will be accepted. The local documentation build and pytest are unrun. The Read the Docs preview and other passing checks do not replace them. My monitoring playbook also relies on only five past PRs from one repository, so its five-day rule is a starting point, not a promise about response time.
 
-Next, I would make the standards check quote each relevant repository rule and compare it directly with the candidate description. I would add a case for the missing AI-use disclosure, confirm that it rejects the package, and rerun the full evaluation to make sure the change does not create new false rejects. That would make the assistant's reasoning easier to check and its limits clearer.
+Next, I would restore CLI access, run the local documentation build and tests, and check the PR again. If a maintainer asks for a change, I would make it and update the PR. If it still needs a response after five quiet days, I would send one polite nudge. Until then, I will present the work as an open draft contribution with a successful documentation preview, not as a completed or merged fix.
